@@ -1,0 +1,45 @@
+.wrapper {
+  padding: 9px 16px;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  -webkit-box-align: center;
+  &:hover {
+    background: rgba(22, 24, 35, 0.03);
+  }
+}
+
+.avatar {
+  height: 40px;
+  width: 40px;
+  margin-right: 12px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.info {
+  flex: 1;
+}
+
+.nickname {
+  display: flex;
+  align-items: flex-start;
+  font-size: 1.4rem;
+  line-height: 22px;
+  font-weight: 600;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.check {
+  color: rgb(32, 213, 236);
+  margin-left: 8px;
+  font-size: 1.4rem;
+}
+
+.username {
+  font-size: 1.2rem;
+  line-height: 20px;
+  color: rgba(22, 24, 35, 0.5);
+}

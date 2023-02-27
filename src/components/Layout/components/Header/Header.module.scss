@@ -24,9 +24,13 @@
   cursor: pointer;
 }
 
+.search,
+.search-result {
+  width: 361px;
+}
+
 .search {
   display: flex;
-  width: 361px;
   height: var(--search-height);
   position: relative;
   padding-left: 16px;
@@ -82,4 +86,13 @@
   &:active {
     background-color: rgba(22, 24, 35, 0.06);
   }
+}
+
+.account-title {
+  height: 30px;
+  padding: 5px 12px;
+  font-size: 14px;
+  line-height: 20px;
+  font-weight: 600;
+  color: rgba(22, 24, 35, 0.5);
 }
