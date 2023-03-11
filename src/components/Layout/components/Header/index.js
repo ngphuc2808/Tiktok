@@ -1,16 +1,48 @@
 import { useEffect, useState } from 'react';
 import classNames from 'classnames/bind';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCircleXmark, faMagnifyingGlass, faSpinner } from '@fortawesome/free-solid-svg-icons';
-import Tippy from '@tippyjs/react';
+import Tippy from '@tippyjs/react/headless';
 import 'tippy.js/dist/tippy.css';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import {
+  faCircleQuestion,
+  faCircleXmark,
+  faEllipsisVertical,
+  faKeyboard,
+  faLanguage,
+  faMagnifyingGlass,
+  faMoon,
+  faPlus,
+  faSpinner,
+  faToggleOff,
+} from '@fortawesome/free-solid-svg-icons';
 import { Wrapper as PopperWrapper } from '~/components/Popper';
 import Button from '~/components/Button';
 
 import styles from './Header.module.scss';
 import images from '~/assets/images';
 import AccountItems from '../AccountItems';
+import Menu from '~/components/Popper/Menu';
 const cx = classNames.bind(styles);
+
+const MENU_ITEMS = [
+  {
+    icon: <FontAwesomeIcon icon={faLanguage} />,
+    title: 'English',
+  },
+  {
+    icon: <FontAwesomeIcon icon={faCircleQuestion} />,
+    title: 'Feedback and help',
+    to: '/feedback',
+  },
+  {
+    icon: <FontAwesomeIcon icon={faKeyboard} />,
+    title: 'Keyboard shortcuts',
+  },
+  {
+    icon: <FontAwesomeIcon icon={faMoon} />,
+    title: 'Dark mode',
+  },
+];
 
 function Header() {
   const [searchResult, setSearchResult] = useState([]);
@@ -55,16 +87,17 @@ function Header() {
           </div>
         </Tippy>
         <div className={cx('actions')}>
-          <Button
-            primary
-            leftIcon={<FontAwesomeIcon icon={faMagnifyingGlass} />}
-            rightIcon={<FontAwesomeIcon icon={faMagnifyingGlass} />}
-          >
+          <Button upload leftIcon={<FontAwesomeIcon icon={faPlus} />}>
+            <span>Upload</span>
+          </Button>
+          <Button primary>
             <span>Log in</span>
           </Button>
-          <Button outline>
-            <span>Log out</span>
-          </Button>
+          <Menu items={MENU_ITEMS}>
+            <button className={cx('more-btn')}>
+              <FontAwesomeIcon icon={faEllipsisVertical} />
+            </button>
+          </Menu>
         </div>
       </div>
     </header>
