@@ -7,7 +7,7 @@ import { useState } from 'react';
 import Header from './Header';
 
 const cx = classNames.bind(styles);
-function Menu({ children, items = [], onChange = () => {} }) {
+function Menu({ children, items = [], onChange = () => {}, currentUser = false }) {
   const [darkMode, setDarkMode] = useState(false);
   const [history, setHistory] = useState([{ data: items }]);
   const currentPage = history[history.length - 1];
@@ -31,20 +31,27 @@ function Menu({ children, items = [], onChange = () => {} }) {
             }
           }}
         >
-          {index === items.length - 1 && (
-            <div className={cx('data-icon', { on: darkMode })} onClick={handleSetMode}>
-              {darkMode === false && <div className={cx('dark-off')}></div>}
-              {darkMode === true && <div className={cx('dark-on')}></div>}
-            </div>
-          )}
+          {currentUser
+            ? index === items.length - 2 && (
+                <div className={cx('data-icon', { on: darkMode })} onClick={handleSetMode}>
+                  {darkMode === false && <div className={cx('dark-off')}></div>}
+                  {darkMode === true && <div className={cx('dark-on')}></div>}
+                </div>
+              )
+            : index === items.length - 1 && (
+                <div className={cx('data-icon', { on: darkMode })} onClick={handleSetMode}>
+                  {darkMode === false && <div className={cx('dark-off')}></div>}
+                  {darkMode === true && <div className={cx('dark-on')}></div>}
+                </div>
+              )}
         </MenuItem>
       );
     });
   };
   return (
     <Tippy
-      visible
       interactive
+      offset={[12, 8]}
       placement="bottom-end"
       render={(attrs) => (
         <div className={cx('menu-list')} tabIndex="-1" {...attrs}>
@@ -61,6 +68,9 @@ function Menu({ children, items = [], onChange = () => {} }) {
           </PopperWrapper>
         </div>
       )}
+      onHide={() => {
+        setHistory((prev) => prev.slice(0, 1));
+      }}
     >
       {children}
     </Tippy>
