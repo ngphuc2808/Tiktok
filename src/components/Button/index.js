@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import classNames from 'classnames/bind';
 import styles from './Button.module.scss';
@@ -10,7 +11,7 @@ function Button({
   outline = false,
   upload = false,
   disabled = false,
-  round = false,
+  rounded = false,
   children,
   small = false,
   large = false,
@@ -41,6 +42,8 @@ function Button({
   } else if (href) {
     props.href = href;
     Comp = 'a';
+  } else {
+    Comp = 'button';
   }
 
   const classes = cx('wrapper', {
@@ -49,7 +52,7 @@ function Button({
     outline,
     upload,
     disabled,
-    round,
+    rounded,
     small,
     large,
   });
@@ -61,5 +64,22 @@ function Button({
     </Comp>
   );
 }
+
+Button.propTypes = {
+  to: PropTypes.string,
+  href: PropTypes.string,
+  primary: PropTypes.bool,
+  outline: PropTypes.bool,
+  upload: PropTypes.bool,
+  disabled: PropTypes.bool,
+  rounded: PropTypes.bool,
+  children: PropTypes.node.isRequired,
+  small: PropTypes.bool,
+  large: PropTypes.bool,
+  className: PropTypes.string,
+  leftIcon: PropTypes.node,
+  rightIcon: PropTypes.node,
+  onClick: PropTypes.func,
+};
 
 export default Button;

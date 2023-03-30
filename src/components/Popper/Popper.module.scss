@@ -2,6 +2,8 @@
   width: 100%;
   min-height: 100px;
   max-height: min((100vh - 96px) - 60px, 734px);
+  display: flex;
+  flex-direction: column;
   padding-top: 8px;
   margin-top: 8px;
   background: rgb(255, 255, 255);

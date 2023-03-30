@@ -1,0 +1,21 @@
+.wrapper {
+  position: fixed;
+  top: 60px;
+  bottom: 0;
+  width: 356px;
+  max-height: 100%;
+  z-index: 99;
+  padding: 20px 8px 26px 8px;
+  margin: 0 -16px;
+  overflow-x: hidden;
+  overflow-y: auto;
+  overscroll-behavior-y: contain;
+  perspective: 1px;
+  transform-style: preserve-3d;
+  perspective-origin: right top;
+  background: rgba(255, 255, 255, 1);
+}
+
+html .wrapper::-webkit-scrollbar {
+  width: 6px;
+}

@@ -1,0 +1,202 @@
+.wrapper {
+  padding: 16px 0;
+  color: rgba(22, 24, 35, 0.75);
+  font-family: var(--font-family);
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 20px;
+  position: relative;
+  &::before {
+    content: '';
+    position: absolute;
+    left: 8px;
+    right: 8px;
+    top: 0;
+    height: 1px;
+    background: rgba(22, 24, 35, 0.12);
+    -webkit-transform: scaleY(0.5);
+    -moz-transform: scaleY(0.5);
+    -ms-transform: scaleY(0.5);
+    transform: scaleY(0.5);
+  }
+}
+
+.wrapper-item {
+  max-height: 48px;
+  padding: 8px;
+  display: flex;
+  flex-direction: row;
+  -webkit-box-align: center;
+  align-items: center;
+  position: relative;
+  border-radius: 4px;
+  transition: background-color 200ms ease-in-out 0s;
+  -webkit-transition: background-color 200ms ease-in-out 0s;
+
+  &:hover {
+    background-color: rgba(22, 24, 35, 0.03);
+  }
+}
+
+.label {
+  padding: 0 8px;
+  margin-bottom: 8px;
+  font-weight: 600;
+  font-size: 1.4rem;
+  line-height: 20px;
+}
+
+.avatar {
+  width: 32px;
+  height: 32px;
+  border-radius: 100%;
+  object-fit: contain;
+  margin-right: 12px;
+}
+
+.nickname {
+  display: flex;
+  flex-direction: row;
+  -webkit-box-align: center;
+  align-items: baseline;
+}
+
+.nickname-title {
+  color: rgb(22, 24, 35);
+  font-family: var(--font-sofia);
+  font-weight: 700;
+  font-size: 1.6rem;
+  line-height: 22px;
+  max-width: 260px;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.username {
+  color: rgba(22, 24, 35, 0.75);
+  font-family: var(--font-family);
+  font-weight: 400;
+  font-size: 1.2rem;
+  line-height: 15px;
+  max-width: 260px;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.check {
+  color: rgb(32, 213, 236);
+  margin-left: 4px;
+  font-size: 1.4rem;
+}
+
+.show-account {
+  background: transparent;
+  border: none;
+  padding: 0px 8px;
+  margin-top: 8px;
+  cursor: pointer;
+  color: rgb(254, 44, 85);
+  font-family: var(--font-family);
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 20px;
+}
+
+.description {
+  display: block;
+  color: rgba(22, 24, 35, 0.5);
+  font-family: var(--font-family);
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 20px;
+  padding: 0px 8px;
+}
+
+.list-user {
+  height: 240px;
+  overflow: hidden;
+}
+
+.open {
+  height: 100%;
+}
+
+.info-user {
+  width: 320px;
+}
+
+.preview-user {
+  padding: 20px;
+}
+
+.header {
+  display: flex;
+  flex-direction: row;
+  -webkit-box-align: center;
+  align-items: center;
+  -webkit-box-pack: justify;
+  justify-content: space-between;
+  margin-bottom: 12px;
+}
+
+.preview-avatar {
+  width: 44px;
+  height: 44px;
+  border-radius: 100%;
+  object-fit: contain;
+}
+
+.follow-btn {
+  min-width: 106px;
+  line-height: 24px;
+  min-height: 28px;
+  padding: 4px 8px;
+}
+
+.nickname-title-preview {
+  color: rgb(22, 24, 35);
+  font-family: var(--font-sofia);
+  font-weight: 700;
+  font-size: 1.8rem;
+  line-height: 22px;
+  max-width: 260px;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.username-preview {
+  color: var(--text-color);
+  font-family: var(--font-family);
+  font-weight: 400;
+  font-size: 1.4rem;
+  line-height: 15px;
+  max-width: 260px;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.info-desc {
+  margin-top: 8px;
+}
+
+.number-preview {
+  color: var(--black);
+  font-weight: 700;
+  margin-right: 6px;
+  font-size: 17px;
+  line-height: 20px;
+  display: inline-block;
+}
+
+.text-preview {
+  color: rgba(22, 24, 35, 0.75);
+  font-weight: 500;
+  margin-right: 12px;
+  font-size: 17px;
+  line-height: 20px;
+  display: inline-block;
+}

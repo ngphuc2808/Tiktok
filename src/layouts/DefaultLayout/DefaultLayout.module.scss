@@ -6,11 +6,14 @@
 
 .container {
   width: var(--default-layout-width);
+  max-width: 100%;
   padding-left: 20px;
   padding-right: 24px;
   display: flex;
 }
 
 .content {
+  margin-top: 60px;
+  margin-left: 356px;
   flex: 1;
 }

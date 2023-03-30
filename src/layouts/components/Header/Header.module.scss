@@ -1,0 +1,90 @@
+.actions {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.action-btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  color: var(--text-color);
+  font-size: 2.2rem;
+  background-color: transparent;
+  padding: 4px 0;
+  margin-left: 16px;
+  cursor: pointer;
+}
+
+.badge {
+  position: absolute;
+  top: -3px;
+  right: -8px;
+  padding: 0px 6px;
+  height: 2rem;
+  line-height: 2rem;
+  border-radius: 10px;
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: var(--white);
+  font-family: var(--font-family);
+  background-color: var(--primary);
+}
+
+.user-avatar {
+  width: 32px;
+  height: 32px;
+  object-fit: cover;
+  border-radius: 50%;
+  margin-left: 24px;
+  cursor: pointer;
+}
+
+.wrapper {
+  --search-boder-radius: 92px;
+  --search-height: 46px;
+  --search-top-spacer: 9px;
+  --search-button-width: 52px;
+  width: 100%;
+  height: var(--default-layout-header-height);
+  background-color: var(--white);
+  box-shadow: 0px 1px 1px rgb(0 0 0 / 12%);
+  display: flex;
+  justify-content: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 999;
+}
+
+.inner {
+  width: var(--default-layout-width);
+  max-width: 100%;
+  height: 100%;
+  padding-left: 20px;
+  padding-right: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.logo {
+  min-width: 300px;
+  display: flex;
+  cursor: pointer;
+}
+
+.more-btn {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  font-size: 2rem;
+  margin-left: 20px;
+  cursor: pointer;
+  background: transparent;
+}
+
+.menu-items {
+  width: 223px;
+}

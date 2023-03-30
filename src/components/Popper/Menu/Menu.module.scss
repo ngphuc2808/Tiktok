@@ -34,6 +34,10 @@
   }
 }
 
+.menu-body {
+  overflow-y: auto;
+}
+
 .data-icon {
   position: absolute;
   width: 44px;
@@ -90,6 +94,7 @@
   margin-top: -8px;
   position: relative;
   height: 50px;
+  flex-shrink: 0;
 }
 
 .back-btn {

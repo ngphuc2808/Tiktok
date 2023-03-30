@@ -1,55 +1,3 @@
-.actions {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.action-btn {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  color: var(--text-color);
-  font-size: 2.2rem;
-  background-color: transparent;
-  padding: 4px 12px;
-  cursor: pointer;
-}
-
-.user-avatar {
-  width: 32px;
-  height: 32px;
-  object-fit: cover;
-  border-radius: 50%;
-  margin-left: 12px;
-  cursor: pointer;
-}
-
-.wrapper {
-  --search-boder-radius: 92px;
-  --search-height: 46px;
-  --search-top-spacer: 9px;
-  --search-button-width: 52px;
-  width: 100%;
-  height: var(--default-layout-header-height);
-  box-shadow: 0px 1px 1px rgb(0 0 0 / 12%);
-  display: flex;
-  justify-content: center;
-}
-
-.inner {
-  width: var(--default-layout-width);
-  height: 100%;
-  padding-left: 20px;
-  padding-right: 24px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-
-.logo {
-  cursor: pointer;
-}
-
 .search,
 .search-result {
   width: 361px;
@@ -59,7 +7,7 @@
   display: flex;
   height: var(--search-height);
   position: relative;
-  padding-left: 16px;
+  padding: 12px 16px;
   background-color: rgba(22, 24, 35, 0.06);
   border-radius: var(--search-boder-radius);
   border: 1.5px solid transparent;
@@ -67,8 +15,10 @@
     flex: 1;
     height: 100%;
     font-size: 1.6rem;
+    padding-right: 60px;
     color: var(--black);
     background-color: transparent;
+    font-family: var(--font-family);
     caret-color: var(--primary);
   }
   input:not(:placeholder-shown) ~ .search-btn {
@@ -95,12 +45,24 @@
   top: 50%;
   transform: translateY(-50%);
   color: rgba(22, 24, 35, 0.34);
-  display: none;
+}
+
+.loading {
+  animation: spinner 1s linear;
+}
+
+@keyframes spinner {
+  from {
+    transform: translateY(-50%) rotate(0);
+  }
+  to {
+    transform: translateY(-50%) rotate(360deg);
+  }
 }
 
 .search-btn {
-  width: var(--search-button-width);
-  height: 100%;
+  padding: 11px 16px 11px 12px;
+  margin: -12px -16px;
   font-size: 2rem;
   color: rgba(22, 24, 35, 0.34);
   border-top-right-radius: var(--search-boder-radius);
@@ -121,18 +83,4 @@
   line-height: 20px;
   font-weight: 600;
   color: rgba(22, 24, 35, 0.5);
-}
-
-.more-btn {
-  display: inline-block;
-  width: 20px;
-  height: 20px;
-  font-size: 2rem;
-  margin-left: 20px;
-  cursor: pointer;
-  background: transparent;
-}
-
-.menu-items {
-  width: 223px;
 }
