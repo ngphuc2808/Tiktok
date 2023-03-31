@@ -65,7 +65,7 @@ function SidebarFooter() {
           Community Guidelines
         </a>
       </div>
-      <span className={cx('copy-right')}>© 2023 Clone Tiktok By Phucnh</span>
+      <span className={cx('copy-right')}>2023 Clone Tiktok By Phucnh</span>
     </div>
   );
 }

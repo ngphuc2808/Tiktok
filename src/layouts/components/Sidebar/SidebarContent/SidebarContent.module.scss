@@ -119,8 +119,17 @@
   overflow: hidden;
 }
 
-.open {
+.list-unfollow-user {
+  max-height: 240px;
+  overflow: hidden;
+}
+
+.open-user {
   height: 100%;
+}
+
+.open-unfollow-user {
+  max-height: 100%;
 }
 
 .info-user {

@@ -33,13 +33,15 @@ function Menu({ children, items = [], onChange = () => {}, currentUser = false, 
           }}
         >
           {currentUser
-            ? index === items.length - 2 && (
+            ? index === items.length - 2 &&
+              history.length === 1 && (
                 <div className={cx('data-icon', { on: darkMode })} onClick={handleSetMode}>
                   {darkMode === false && <div className={cx('dark-off')}></div>}
                   {darkMode === true && <div className={cx('dark-on')}></div>}
                 </div>
               )
-            : index === items.length - 1 && (
+            : index === items.length - 1 &&
+              history.length === 1 && (
                 <div className={cx('data-icon', { on: darkMode })} onClick={handleSetMode}>
                   {darkMode === false && <div className={cx('dark-off')}></div>}
                   {darkMode === true && <div className={cx('dark-on')}></div>}

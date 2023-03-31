@@ -6,6 +6,7 @@ import Search from '~/pages/Search';
 import Live from '~/pages/Live';
 import { HeaderOnly } from '~/layouts';
 import config from '~/config';
+import Explore from '~/pages/Explore';
 
 //public routes
 const publicRoutes = [
@@ -24,6 +25,12 @@ const publicRoutes = [
   {
     path: config.routes.live,
     component: Live,
+    layout: HeaderOnly,
+  },
+  {
+    path: config.routes.explore,
+    component: Explore,
+    layout: HeaderOnly,
   },
   {
     path: config.routes.upload,

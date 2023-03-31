@@ -24,7 +24,7 @@ import images from '~/assets/images';
 import Menu from '~/components/Popper/Menu';
 import { faUser } from '@fortawesome/free-regular-svg-icons';
 import { InboxIcon, MessageIcon } from '~/components/Icons';
-import Search from '../Search';
+import Search from './Search';
 import config from '~/config';
 
 const cx = classNames.bind(styles);
@@ -216,11 +216,9 @@ const USER_MENU_ITEMS = [
 ];
 
 function Header() {
-  const currentUser = false;
+  const currentUser = true;
 
-  const handleMenuChange = (value) => {
-    console.log(value);
-  };
+  const handleMenuChange = () => {};
 
   return (
     <header className={cx('wrapper')}>
@@ -268,7 +266,7 @@ function Header() {
               <Image
                 className={cx('user-avatar')}
                 alt="Nguyen Hoang Phuc"
-                src="https://p16-sign-va.tiktokcdn.com/tos-maliva-avt-0068/f7769152335725b92f7f702909d2d388~c5_100x100.jpeg?x-expires=1679486400&x-signature=faHUwzZyls6ou5UfLGVB51ORlfk%3D"
+                src="https://fullstack.edu.vn/static/media/f8-icon.18cd71cfcfa33566a22b.png"
                 fallBack="https://fullstack.edu.vn/static/media/f8-icon.18cd71cfcfa33566a22b.png"
               />
             ) : (

@@ -7,18 +7,17 @@ import { useState } from 'react';
 
 const cx = classNames.bind(styles);
 
-function SidebarContent({ label, following = true }) {
-  const checkFollow = false;
+function SidebarContent({ label, following = false }) {
+  const checkFollow = true;
   const [openList, setOpenList] = useState(true);
-
   return (
     <div className={cx('wrapper')}>
       <p className={cx('label')}>{label}</p>
-      {following ? (
+      {following === false ? (
         <>
           <div
             className={cx('list-user', {
-              open: !openList,
+              'open-user': !openList,
             })}
           >
             <AccountItem />
@@ -60,8 +59,26 @@ function SidebarContent({ label, following = true }) {
         <>
           {checkFollow ? (
             <>
-              <AccountItem />
-              <button className={cx('show-account')}>See all</button>
+              <div
+                className={cx('list-unfollow-user', {
+                  'open-unfollow-user': !openList,
+                })}
+              >
+                <AccountItem checkFollow />
+                <AccountItem checkFollow />
+                <AccountItem checkFollow />
+                <AccountItem checkFollow />
+                <AccountItem checkFollow />
+                <AccountItem checkFollow />
+                <AccountItem checkFollow />
+                <AccountItem checkFollow />
+                <AccountItem checkFollow />
+                <AccountItem checkFollow />
+                <AccountItem checkFollow />
+              </div>
+              <button className={cx('show-account')} onClick={() => setOpenList(!openList)}>
+                {openList ? 'See all' : 'See less'}
+              </button>
             </>
           ) : (
             <span className={cx('description')}>Accounts you follow will appear here </span>
@@ -74,6 +91,7 @@ function SidebarContent({ label, following = true }) {
 
 SidebarContent.propTypes = {
   label: PropTypes.string.isRequired,
+  following: PropTypes.bool,
 };
 
 export default SidebarContent;

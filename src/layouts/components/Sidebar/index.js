@@ -4,6 +4,8 @@ import Menu from './Menu';
 import MenuItem from './Menu/MenuItem';
 import config from '~/config';
 import {
+  ExploreActiveIcon,
+  ExploreIcon,
   HomeActiveIcon,
   HomeIcon,
   LiveActiveIcon,
@@ -18,7 +20,7 @@ import SidebarContent from './SidebarContent';
 
 const cx = classNames.bind(styles);
 function Sidebar() {
-  const currentUser = false;
+  const currentUser = true;
   return (
     <aside className={cx('wrapper')}>
       <Menu>
@@ -29,11 +31,17 @@ function Sidebar() {
           icon={<UserGroupIcon />}
           activeIcon={<UserGroupActiveIcon />}
         />
+        <MenuItem
+          title="Explore"
+          to={config.routes.explore}
+          icon={<ExploreIcon />}
+          activeIcon={<ExploreActiveIcon />}
+        />
         <MenuItem title="LIVE" to={config.routes.live} icon={<LiveIcon />} activeIcon={<LiveActiveIcon />} />
       </Menu>
       <CheckLogin />
       <SidebarContent label="Suggested accounts" />
-      {currentUser ? <SidebarContent label="Following accounts" following={false} /> : null}
+      {currentUser ? <SidebarContent label="Following accounts" following /> : null}
       <Discover label="Discover" />
       <SidebarFooter />
     </aside>
