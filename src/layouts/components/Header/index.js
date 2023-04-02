@@ -232,9 +232,11 @@ function Header() {
         <div className={cx('actions')}>
           {currentUser ? (
             <>
-              <Button upload leftIcon={<FontAwesomeIcon icon={faPlus} />}>
-                <span>Upload</span>
-              </Button>
+              <Link to={'/Upload'}>
+                <Button upload leftIcon={<FontAwesomeIcon icon={faPlus} />}>
+                  <span>Upload</span>
+                </Button>
+              </Link>
               <Tippy content="Messages" placement="bottom">
                 <button className={cx('action-btn')}>
                   <MessageIcon />

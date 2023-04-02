@@ -3,13 +3,37 @@ import PropTypes from 'prop-types';
 import classNames from 'classnames/bind';
 import styles from './SidebarContent.module.scss';
 import AccountItem from './AccountItem';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+
+import * as suggestedApi from '~/services/suggestedApi';
 
 const cx = classNames.bind(styles);
 
 function SidebarContent({ label, following = false }) {
-  const checkFollow = true;
+  const checkFollow = false;
   const [openList, setOpenList] = useState(true);
+
+  const [listSuggested, setListSuggested] = useState([]);
+
+  const [perPage, setPerPage] = useState(5);
+
+  useEffect(() => {
+    if (!following) {
+      const fetchApi = async () => {
+        const result = await suggestedApi.suggested(perPage);
+        setListSuggested(result);
+      };
+
+      fetchApi();
+    }
+    // eslint-disable-next-line
+  }, [perPage]);
+
+  const handleOpenList = () => {
+    setPerPage(20);
+    setOpenList(!openList);
+  };
+
   return (
     <div className={cx('wrapper')}>
       <p className={cx('label')}>{label}</p>
@@ -20,38 +44,11 @@ function SidebarContent({ label, following = false }) {
               'open-user': !openList,
             })}
           >
-            <AccountItem />
-            <AccountItem />
-            <AccountItem />
-            <AccountItem />
-            <AccountItem />
-            <AccountItem />
-            <AccountItem />
-            <AccountItem />
-            <AccountItem />
-            <AccountItem />
-            <AccountItem />
-            <AccountItem />
-            <AccountItem />
-            <AccountItem />
-            <AccountItem />
-            <AccountItem />
-            <AccountItem />
-            <AccountItem />
-            <AccountItem />
-            <AccountItem />
-            <AccountItem />
-            <AccountItem />
-            <AccountItem />
-            <AccountItem />
-            <AccountItem />
-            <AccountItem />
-            <AccountItem />
-            <AccountItem />
-            <AccountItem />
-            <AccountItem />
+            {listSuggested.map((result) => (
+              <AccountItem key={result.id} data={result} />
+            ))}
           </div>
-          <button className={cx('show-account')} onClick={() => setOpenList(!openList)}>
+          <button className={cx('show-account')} onClick={handleOpenList}>
             {openList ? 'See all' : 'See less'}
           </button>
         </>

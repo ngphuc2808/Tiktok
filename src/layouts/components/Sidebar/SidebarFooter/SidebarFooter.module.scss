@@ -39,6 +39,9 @@
   display: inline-block;
   margin-right: 6px;
   margin-top: 5px;
+  &:hover {
+    text-decoration: underline;
+  }
 }
 
 .copy-right {
