@@ -70,7 +70,11 @@ function Search() {
         )}
         onClickOutside={handleClickOutside}
       >
-        <div className={cx('search')}>
+        <div
+          className={cx('search', {
+            'dark-mode': JSON.parse(localStorage.getItem('dark-mode')),
+          })}
+        >
           <input
             ref={inputRef}
             value={searchValue}
@@ -87,13 +91,30 @@ function Search() {
           />
 
           {!!searchValue && !loading && (
-            <button className={cx('clear')} onClick={handleClear}>
+            <button
+              className={cx('clear', {
+                'light-icon': JSON.parse(localStorage.getItem('dark-mode')),
+              })}
+              onClick={handleClear}
+            >
               <FontAwesomeIcon icon={faCircleXmark} />
             </button>
           )}
-          {loading && <FontAwesomeIcon className={cx('loading')} icon={faSpinner} />}
+          {loading && (
+            <FontAwesomeIcon
+              className={cx('loading', {
+                'light-icon': JSON.parse(localStorage.getItem('dark-mode')),
+              })}
+              icon={faSpinner}
+            />
+          )}
 
-          <button className={cx('search-btn')} onMouseDown={(e) => e.preventDefault()}>
+          <button
+            className={cx('search-btn', {
+              'search-btn-dark': JSON.parse(localStorage.getItem('dark-mode')),
+            })}
+            onMouseDown={(e) => e.preventDefault()}
+          >
             <SearchIcon />
           </button>
         </div>

@@ -21,11 +21,12 @@ import {
 import Button from '~/components/Button';
 import Image from '~/components/Image';
 import images from '~/assets/images';
-import Menu from '~/components/Popper/Menu';
+import Menu from '~/layouts/components/Header/Menu';
 import { faUser } from '@fortawesome/free-regular-svg-icons';
 import { InboxIcon, MessageIcon } from '~/components/Icons';
 import Search from './Search';
 import config from '~/config';
+import { useState } from 'react';
 
 const cx = classNames.bind(styles);
 
@@ -220,12 +221,22 @@ function Header() {
 
   const handleMenuChange = () => {};
 
+  const checkDarkMode = localStorage.getItem('dark-mode');
+
+  const [darkMode, setDarkMode] = useState(JSON.parse(checkDarkMode) || false);
+
   return (
-    <header className={cx('wrapper')}>
+    <header
+      className={cx('wrapper', {
+        'dark-mode': JSON.parse(localStorage.getItem('dark-mode')),
+      })}
+    >
       <div className={cx('inner')}>
-        <Link to={config.routes.home} className={cx('logo')}>
-          <img src={images.logo} alt="TikTok"></img>
-        </Link>
+        <div className={cx('logo')}>
+          <Link className={cx('logo-icon')} to={config.routes.home}>
+            <img src={!checkDarkMode || !JSON.parse(checkDarkMode) ? images.logo : images.logoLight} alt="TikTok"></img>
+          </Link>
+        </div>
 
         <Search />
 
@@ -263,6 +274,8 @@ function Header() {
             items={currentUser ? USER_MENU_ITEMS : MENU_ITEMS}
             onChange={handleMenuChange}
             currentUser={currentUser}
+            darkMode={darkMode}
+            setDarkMode={setDarkMode}
           >
             {currentUser ? (
               <Image

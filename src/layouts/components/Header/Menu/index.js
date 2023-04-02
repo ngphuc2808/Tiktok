@@ -8,13 +8,23 @@ import { useState } from 'react';
 import Header from './Header';
 
 const cx = classNames.bind(styles);
-function Menu({ children, items = [], onChange = () => {}, currentUser = false, hideOnClick = false }) {
-  const [darkMode, setDarkMode] = useState(false);
+function Menu({
+  children,
+  items = [],
+  onChange = () => {},
+  currentUser = false,
+  darkMode,
+  setDarkMode,
+  hideOnClick = false,
+}) {
   const [history, setHistory] = useState([{ data: items }]);
   const currentPage = history[history.length - 1];
   const handleSetMode = () => {
     setDarkMode(!darkMode);
+    localStorage.setItem('dark-mode', !darkMode);
   };
+
+  const checkDarkMode = JSON.parse(localStorage.getItem('dark-mode'));
 
   const renderItems = () => {
     return currentPage.data.map((item, index) => {
@@ -35,16 +45,16 @@ function Menu({ children, items = [], onChange = () => {}, currentUser = false, 
           {currentUser
             ? index === items.length - 2 &&
               history.length === 1 && (
-                <div className={cx('data-icon', { on: darkMode })} onClick={handleSetMode}>
-                  {darkMode === false && <div className={cx('dark-off')}></div>}
-                  {darkMode === true && <div className={cx('dark-on')}></div>}
+                <div className={cx('data-icon', { on: checkDarkMode })} onClick={handleSetMode}>
+                  {(!localStorage.getItem('dark-mode') || !checkDarkMode) && <div className={cx('dark-off')}></div>}
+                  {checkDarkMode && <div className={cx('dark-on')}></div>}
                 </div>
               )
             : index === items.length - 1 &&
               history.length === 1 && (
-                <div className={cx('data-icon', { on: darkMode })} onClick={handleSetMode}>
-                  {darkMode === false && <div className={cx('dark-off')}></div>}
-                  {darkMode === true && <div className={cx('dark-on')}></div>}
+                <div className={cx('data-icon', { on: checkDarkMode })} onClick={handleSetMode}>
+                  {(!localStorage.getItem('dark-mode') || !checkDarkMode) && <div className={cx('dark-off')}></div>}
+                  {checkDarkMode && <div className={cx('dark-on')}></div>}
                 </div>
               )}
         </MenuItem>

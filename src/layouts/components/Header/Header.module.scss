@@ -58,6 +58,10 @@
   z-index: 999;
 }
 
+.dark-mode {
+  background-color: var(--dark);
+}
+
 .inner {
   width: var(--default-layout-width);
   max-width: 100%;
@@ -72,7 +76,13 @@
 .logo {
   min-width: 300px;
   display: flex;
-  cursor: pointer;
+  align-items: center;
+}
+
+.logo-icon {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .more-btn {
