@@ -12,7 +12,6 @@ function Button({
   upload = false,
   disabled = false,
   rounded = false,
-  children,
   small = false,
   large = false,
   darkModeUpload = false,
@@ -21,6 +20,7 @@ function Button({
   className,
   leftIcon,
   rightIcon,
+  children,
   onClick,
   ...passProps
 }) {

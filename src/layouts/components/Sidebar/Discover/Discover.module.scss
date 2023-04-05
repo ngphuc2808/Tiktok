@@ -79,6 +79,10 @@
   }
 }
 
+.tag-icon {
+  color: var(--black);
+}
+
 .tag-title {
   font-family: var(--font-family);
   font-weight: 400;
@@ -86,8 +90,4 @@
   overflow: hidden;
   white-space: nowrap;
   padding-left: 6px;
-}
-
-.tag-icon {
-  color: var(--black);
 }

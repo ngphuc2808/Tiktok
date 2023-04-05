@@ -1,3 +1,4 @@
+// Index
 .wrapper {
   padding: 16px 0;
   color: rgba(22, 24, 35, 0.75);
@@ -35,37 +36,6 @@
   }
 }
 
-.dark-mode-popper {
-  & a,
-  span {
-    color: var(--white);
-  }
-  & .text-preview {
-    color: var(--white-medium);
-  }
-}
-
-.check-light {
-  color: var(--white);
-}
-
-.wrapper-item {
-  max-height: 48px;
-  padding: 8px;
-  display: flex;
-  flex-direction: row;
-  -webkit-box-align: center;
-  align-items: center;
-  position: relative;
-  border-radius: 4px;
-  transition: background-color 200ms ease-in-out 0s;
-  -webkit-transition: background-color 200ms ease-in-out 0s;
-
-  &:hover {
-    background-color: rgba(22, 24, 35, 0.03);
-  }
-}
-
 .label {
   padding: 0 8px;
   margin-bottom: 8px;
@@ -74,51 +44,22 @@
   line-height: 20px;
 }
 
-.avatar {
-  width: 32px;
-  height: 32px;
-  border-radius: 100%;
-  object-fit: contain;
-  margin-right: 12px;
-}
-
-.nickname {
-  display: flex;
-  flex-direction: row;
-  -webkit-box-align: center;
-  align-items: baseline;
-}
-
-.nickname-title {
-  color: rgb(22, 24, 35);
-  font-family: var(--font-sofia);
-  font-weight: 700;
-  font-size: 1.6rem;
-  line-height: 22px;
-  max-width: 260px;
-  text-overflow: ellipsis;
+.list-user {
+  height: 240px;
   overflow: hidden;
-  white-space: nowrap;
 }
 
-.username {
-  color: rgba(22, 24, 35, 0.75);
-  font-family: var(--font-family);
-  font-weight: 400;
-  font-size: 1.2rem;
-  line-height: 15px;
-  max-width: 260px;
-  text-overflow: ellipsis;
+.list-unfollow-user {
+  max-height: 240px;
   overflow: hidden;
-  white-space: nowrap;
 }
 
-.check {
-  border-radius: 100%;
-  background-color: var(--white);
-  color: rgb(32, 213, 236);
-  margin-left: 4px;
-  font-size: 1.4rem;
+.open-user {
+  height: 100%;
+}
+
+.open-unfollow-user {
+  max-height: 100%;
 }
 
 .show-account {
@@ -148,26 +89,19 @@
   color: var(--white-low);
 }
 
-.list-user {
-  height: 240px;
-  overflow: hidden;
-}
-
-.list-unfollow-user {
-  max-height: 240px;
-  overflow: hidden;
-}
-
-.open-user {
-  height: 100%;
-}
-
-.open-unfollow-user {
-  max-height: 100%;
-}
-
+// AccountItems
 .info-user {
   width: 320px;
+}
+
+.dark-mode-popper {
+  & a,
+  span {
+    color: var(--white);
+  }
+  & .text-preview {
+    color: var(--white-medium);
+  }
 }
 
 .preview-user {
@@ -198,6 +132,25 @@
   padding: 4px 8px;
 }
 
+.nickname {
+  display: flex;
+  flex-direction: row;
+  -webkit-box-align: center;
+  align-items: baseline;
+}
+
+.nickname-title {
+  color: rgb(22, 24, 35);
+  font-family: var(--font-sofia);
+  font-weight: 700;
+  font-size: 1.6rem;
+  line-height: 22px;
+  max-width: 260px;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
 .nickname-title-preview {
   color: rgb(22, 24, 35);
   font-family: var(--font-sofia);
@@ -208,6 +161,18 @@
   text-overflow: ellipsis;
   overflow: hidden;
   white-space: nowrap;
+}
+
+.check {
+  border-radius: 100%;
+  background-color: var(--white);
+  color: rgb(32, 213, 236);
+  margin-left: 4px;
+  font-size: 1.4rem;
+}
+
+.check-light {
+  color: var(--white);
 }
 
 .username-preview {
@@ -242,4 +207,41 @@
   font-size: 17px;
   line-height: 20px;
   display: inline-block;
+}
+
+.wrapper-item {
+  max-height: 48px;
+  padding: 8px;
+  display: flex;
+  flex-direction: row;
+  -webkit-box-align: center;
+  align-items: center;
+  position: relative;
+  border-radius: 4px;
+  transition: background-color 200ms ease-in-out 0s;
+  -webkit-transition: background-color 200ms ease-in-out 0s;
+
+  &:hover {
+    background-color: rgba(22, 24, 35, 0.03);
+  }
+}
+
+.avatar {
+  width: 32px;
+  height: 32px;
+  border-radius: 100%;
+  object-fit: contain;
+  margin-right: 12px;
+}
+
+.username {
+  color: rgba(22, 24, 35, 0.75);
+  font-family: var(--font-family);
+  font-weight: 400;
+  font-size: 1.2rem;
+  line-height: 15px;
+  max-width: 260px;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
 }
