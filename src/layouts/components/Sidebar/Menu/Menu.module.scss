@@ -30,6 +30,25 @@
   }
 }
 
+.dark-mode-item {
+  color: var(--white);
+  &:hover {
+    background-color: rgba(255, 255, 255, 0.04);
+  }
+
+  &.active {
+    color: var(--primary-dark);
+
+    .active-icon {
+      display: block;
+    }
+
+    .icon {
+      display: none;
+    }
+  }
+}
+
 .title {
   margin-left: 8px;
 }

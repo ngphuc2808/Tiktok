@@ -7,24 +7,22 @@ import MenuItem from './MenuItem';
 import { useState } from 'react';
 import Header from './Header';
 
+import { useDispatch, useSelector } from 'react-redux';
+import { setDarkMode } from '~/features/redux/slices/darkModeSlice';
+
 const cx = classNames.bind(styles);
-function Menu({
-  children,
-  items = [],
-  onChange = () => {},
-  currentUser = false,
-  darkMode,
-  setDarkMode,
-  hideOnClick = false,
-}) {
+function Menu({ children, items = [], onChange = () => {}, hideOnClick = false }) {
+  const currentUser = true;
+
   const [history, setHistory] = useState([{ data: items }]);
   const currentPage = history[history.length - 1];
-  const handleSetMode = () => {
-    setDarkMode(!darkMode);
-    localStorage.setItem('dark-mode', !darkMode);
-  };
 
-  const checkDarkMode = JSON.parse(localStorage.getItem('dark-mode'));
+  const { mode } = useSelector((state) => state.darkMode);
+
+  const dispatch = useDispatch();
+  const handleSetMode = () => {
+    dispatch(setDarkMode());
+  };
 
   const renderItems = () => {
     return currentPage.data.map((item, index) => {
@@ -42,21 +40,12 @@ function Menu({
             }
           }}
         >
-          {currentUser
-            ? index === items.length - 2 &&
-              history.length === 1 && (
-                <div className={cx('data-icon', { on: checkDarkMode })} onClick={handleSetMode}>
-                  {(!localStorage.getItem('dark-mode') || !checkDarkMode) && <div className={cx('dark-off')}></div>}
-                  {checkDarkMode && <div className={cx('dark-on')}></div>}
-                </div>
-              )
-            : index === items.length - 1 &&
-              history.length === 1 && (
-                <div className={cx('data-icon', { on: checkDarkMode })} onClick={handleSetMode}>
-                  {(!localStorage.getItem('dark-mode') || !checkDarkMode) && <div className={cx('dark-off')}></div>}
-                  {checkDarkMode && <div className={cx('dark-on')}></div>}
-                </div>
-              )}
+          {item.target && (
+            <div className={cx('data-icon', { on: mode })} onClick={handleSetMode}>
+              {!mode && <div className={cx('dark-off')}></div>}
+              {mode && <div className={cx('dark-on')}></div>}
+            </div>
+          )}
         </MenuItem>
       );
     });
@@ -65,11 +54,16 @@ function Menu({
     <Tippy
       hideOnClick={hideOnClick}
       interactive
-      offset={[12, 8]}
+      offset={currentUser ? [19, 3] : [12, 3]}
       placement="bottom-end"
       render={(attrs) => (
         <div className={cx('menu-list')} tabIndex="-1" {...attrs}>
-          <PopperWrapper className={cx('menu-popper')}>
+          <PopperWrapper
+            className={cx('menu-popper', {
+              auth: currentUser,
+              'menu-popper-dark': mode,
+            })}
+          >
             {history.length > 1 && (
               <Header
                 title={currentPage.title}

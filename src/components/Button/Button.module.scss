@@ -58,12 +58,25 @@
   }
 }
 
+.darkModePrimary {
+  background-color: var(--primary-dark);
+}
+
 .outline {
   background-color: var(--white);
   color: var(--primary);
   border-color: var(--primary);
   &:hover {
     border-color: var(--primary);
+    background-color: rgba(254, 44, 85, 0.06);
+  }
+}
+
+.darkModeOutlinePrimary {
+  color: var(--primary-dark);
+  border-color: var(--primary-dark);
+  background-color: rgba(255, 255, 255, 0.08);
+  &:hover {
     background-color: rgba(254, 44, 85, 0.06);
   }
 }
@@ -75,6 +88,15 @@
   border-color: rgba(22, 24, 35, 0.12);
   &:hover {
     background-color: rgba(22, 24, 35, 0.03);
+  }
+}
+
+.darkModeUpload {
+  color: var(--white);
+  border-color: rgba(22, 24, 35, 0.12);
+  background-color: rgba(255, 255, 255, 0.08);
+  &:hover {
+    background-color: rgba(255, 255, 255, 0.06);
   }
 }
 

@@ -2,7 +2,19 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { publicRoutes } from './routes';
 import { DefaultLayout } from './layouts';
 import { Fragment } from 'react';
+import { useSelector } from 'react-redux';
+import { useEffect } from 'react';
 function App() {
+  const { mode } = useSelector((state) => state.darkMode);
+
+  useEffect(() => {
+    if (mode) document.body.classList.add('body-dark');
+    else document.body.classList.remove('body-dark');
+    return () => {
+      document.body.classList.remove('body-dark');
+    };
+  }, [mode]);
+
   return (
     <Router>
       <div className="App">

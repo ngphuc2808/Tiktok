@@ -7,10 +7,13 @@ import Image from '~/components/Image';
 import HeadlessTippy from '@tippyjs/react/headless';
 import { Wrapper as PopperWrapper } from '~/components/Popper';
 import Button from '~/components/Button';
+import { useSelector } from 'react-redux';
 
 const cx = classNames.bind(styles);
 
 function AccountItem({ data, checkFollow = false }) {
+  const { mode } = useSelector((state) => state.darkMode);
+
   return (
     <>
       {checkFollow === false ? (
@@ -21,18 +24,31 @@ function AccountItem({ data, checkFollow = false }) {
             placement="bottom"
             offset={[-20, -5]}
             render={(attrs) => (
-              <div className={cx('info-user')} tabIndex="-1" {...attrs}>
+              <div
+                className={cx('info-user', {
+                  'dark-mode-popper': mode,
+                })}
+                tabIndex="-1"
+                {...attrs}
+              >
                 <PopperWrapper>
                   <div className={cx('preview-user')}>
                     <div className={cx('header')}>
                       <Image src={data.avatar} className={cx('preview-avatar')} alt={data.nickname} />
-                      <Button className={cx('follow-btn')} primary small>
+                      <Button className={cx('follow-btn')} darkModePrimary={mode} primary small>
                         Follow
                       </Button>
                     </div>
                     <Link to={`/@${data.nickname}`} className={cx('nickname')}>
                       <span className={cx('nickname-title-preview')}>{data.nickname}</span>
-                      {data.tick && <FontAwesomeIcon className={cx('check')} icon={faCircleCheck} />}
+                      {data.tick && (
+                        <FontAwesomeIcon
+                          className={cx('check', {
+                            'check-light': mode,
+                          })}
+                          icon={faCircleCheck}
+                        />
+                      )}
                     </Link>
                     <Link to={`/@${data.nickname}`} className={cx('username-preview')}>
                       {data.first_name} {data.last_name}
@@ -53,7 +69,14 @@ function AccountItem({ data, checkFollow = false }) {
               <div className={cx('info')}>
                 <h4 className={cx('nickname')}>
                   <span className={cx('nickname-title')}>{data.nickname}</span>
-                  {data.tick && <FontAwesomeIcon className={cx('check')} icon={faCircleCheck} />}
+                  {data.tick && (
+                    <FontAwesomeIcon
+                      className={cx('check', {
+                        'check-light': mode,
+                      })}
+                      icon={faCircleCheck}
+                    />
+                  )}
                 </h4>
                 <span className={cx('username')}>
                   {data.first_name} {data.last_name}

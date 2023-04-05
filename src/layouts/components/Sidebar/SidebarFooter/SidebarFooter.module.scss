@@ -21,6 +21,17 @@
   }
 }
 
+.dark-mode {
+  &::before {
+    content: '';
+    background: rgba(255, 255, 255, 0.12);
+  }
+  & .list-content a,
+  .copy-right {
+    color: var(--white-low);
+  }
+}
+
 .list-content {
   display: flex;
   flex-wrap: wrap;

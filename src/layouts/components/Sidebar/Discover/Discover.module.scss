@@ -21,6 +21,29 @@
   }
 }
 
+.dark-mode {
+  &::before {
+    content: '';
+    background: rgba(255, 255, 255, 0.12);
+  }
+
+  & .label {
+    color: var(--white);
+  }
+
+  & .tag {
+    color: var(--white-medium);
+    background-color: rgba(255, 255, 255, 0.08);
+    &:hover {
+      background: rgba(255, 255, 255, 0.04);
+    }
+  }
+
+  & .tag .tag-icon {
+    color: var(--white-medium);
+  }
+}
+
 .label {
   padding: 0 8px;
   font-weight: 600;
@@ -38,8 +61,6 @@
 }
 
 .tag {
-  font-family: var(--font-family);
-  font-weight: 400;
   display: flex;
   margin-right: 8px;
   box-sizing: border-box;
@@ -50,7 +71,7 @@
   padding: 3px 10px;
   border: 1px solid rgba(22, 24, 35, 0.2);
   border-radius: 12px;
-  background-color: rgb(255, 255, 255);
+  background-color: #ffffff;
   transition: background-color 200ms ease-in-out 0s;
   cursor: pointer;
   &:hover {
@@ -59,6 +80,8 @@
 }
 
 .tag-title {
+  font-family: var(--font-family);
+  font-weight: 400;
   text-overflow: ellipsis;
   overflow: hidden;
   white-space: nowrap;

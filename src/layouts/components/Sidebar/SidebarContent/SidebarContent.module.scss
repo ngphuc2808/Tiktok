@@ -21,6 +21,34 @@
   }
 }
 
+.dark-mode {
+  &::before {
+    content: '';
+    background: rgba(255, 255, 255, 0.12);
+  }
+  & p,
+  .nickname-title {
+    color: var(--white);
+  }
+  & .username {
+    color: var(--white-medium);
+  }
+}
+
+.dark-mode-popper {
+  & a,
+  span {
+    color: var(--white);
+  }
+  & .text-preview {
+    color: var(--white-medium);
+  }
+}
+
+.check-light {
+  color: var(--white);
+}
+
 .wrapper-item {
   max-height: 48px;
   padding: 8px;
@@ -86,6 +114,8 @@
 }
 
 .check {
+  border-radius: 100%;
+  background-color: var(--white);
   color: rgb(32, 213, 236);
   margin-left: 4px;
   font-size: 1.4rem;
@@ -112,6 +142,10 @@
   font-size: 14px;
   line-height: 20px;
   padding: 0px 8px;
+}
+
+.dark-mode-text {
+  color: var(--white-low);
 }
 
 .list-user {

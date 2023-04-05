@@ -15,6 +15,9 @@ function Button({
   children,
   small = false,
   large = false,
+  darkModeUpload = false,
+  darkModePrimary = false,
+  darkModeOutlinePrimary = false,
   className,
   leftIcon,
   rightIcon,
@@ -55,6 +58,9 @@ function Button({
     rounded,
     small,
     large,
+    darkModeUpload,
+    darkModePrimary,
+    darkModeOutlinePrimary,
   });
   return (
     <Comp className={classes} {...props}>
@@ -76,6 +82,9 @@ Button.propTypes = {
   children: PropTypes.node.isRequired,
   small: PropTypes.bool,
   large: PropTypes.bool,
+  darkModeUpload: PropTypes.bool,
+  darkModePrimary: PropTypes.bool,
+  darkModeOutlinePrimary: PropTypes.bool,
   className: PropTypes.string,
   leftIcon: PropTypes.node,
   rightIcon: PropTypes.node,

@@ -27,10 +27,22 @@
   &::after {
     content: '';
     position: absolute;
-    top: -24px;
-    right: 17px;
-    border: 12px solid;
+    top: -16px;
+    right: 13px;
+    border: 9px solid;
     border-color: transparent transparent white transparent;
+  }
+}
+
+.menu-popper-dark {
+  &::after {
+    border-color: transparent transparent #252525 transparent;
+  }
+}
+
+.auth {
+  &::after {
+    right: 26px;
   }
 }
 
@@ -63,7 +75,7 @@
   top: 50%;
   transform: translateY(-50%);
   border-radius: 100px;
-  background: rgb(255, 255, 255);
+  background: #ffffff;
   box-shadow: rgb(0 0 0 / 15%) 0px 1px 2px;
   transition: all 0.4s cubic-bezier(0.075, 0.82, 0.165, 1) 0s;
 }
@@ -81,7 +93,7 @@
   top: 50%;
   transform: translate(-100%, -50%);
   border-radius: 100px;
-  background: rgb(255, 255, 255);
+  background: #ffffff;
   box-shadow: rgb(0 0 0 / 15%) 0px 1px 2px;
   transition: all 0.4s cubic-bezier(0.075, 0.82, 0.165, 1) 0s;
 }
@@ -90,11 +102,27 @@
   background: rgb(11, 224, 155);
 }
 
+.dark-mode-item {
+  color: var(--white);
+  background-color: #252525;
+  &:hover {
+    background: rgba(255, 255, 255, 0.04);
+  }
+}
+
 .header {
+  cursor: pointer;
   margin-top: -8px;
   position: relative;
   height: 50px;
   flex-shrink: 0;
+}
+
+.header-dark {
+  color: var(--white);
+  & > :first-child {
+    color: var(--white);
+  }
 }
 
 .back-btn {

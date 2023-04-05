@@ -26,7 +26,7 @@ import { faUser } from '@fortawesome/free-regular-svg-icons';
 import { InboxIcon, MessageIcon } from '~/components/Icons';
 import Search from './Search';
 import config from '~/config';
-import { useState } from 'react';
+import { useSelector } from 'react-redux';
 
 const cx = classNames.bind(styles);
 
@@ -188,6 +188,7 @@ const MENU_ITEMS = [
   {
     icon: <FontAwesomeIcon icon={faMoon} />,
     title: 'Dark mode',
+    target: 'dark-mode',
   },
 ];
 
@@ -221,20 +222,18 @@ function Header() {
 
   const handleMenuChange = () => {};
 
-  const checkDarkMode = localStorage.getItem('dark-mode');
-
-  const [darkMode, setDarkMode] = useState(JSON.parse(checkDarkMode) || false);
+  const { mode } = useSelector((state) => state.darkMode);
 
   return (
     <header
       className={cx('wrapper', {
-        'dark-mode': JSON.parse(localStorage.getItem('dark-mode')),
+        'dark-mode': mode,
       })}
     >
       <div className={cx('inner')}>
         <div className={cx('logo')}>
           <Link className={cx('logo-icon')} to={config.routes.home}>
-            <img src={!checkDarkMode || !JSON.parse(checkDarkMode) ? images.logo : images.logoLight} alt="TikTok"></img>
+            <img src={!mode ? images.logo : images.logoLight} alt="TikTok"></img>
           </Link>
         </div>
 
@@ -244,17 +243,25 @@ function Header() {
           {currentUser ? (
             <>
               <Link to={'/Upload'}>
-                <Button upload leftIcon={<FontAwesomeIcon icon={faPlus} />}>
+                <Button darkModeUpload={mode} upload leftIcon={<FontAwesomeIcon icon={faPlus} />}>
                   <span>Upload</span>
                 </Button>
               </Link>
               <Tippy content="Messages" placement="bottom">
-                <button className={cx('action-btn')}>
+                <button
+                  className={cx('action-btn', {
+                    'action-btn-light': mode,
+                  })}
+                >
                   <MessageIcon />
                 </button>
               </Tippy>
               <Tippy content="Inbox" placement="bottom">
-                <button className={cx('action-btn')}>
+                <button
+                  className={cx('action-btn', {
+                    'action-btn-light': mode,
+                  })}
+                >
                   <InboxIcon />
                   <span className={cx('badge')}>12</span>
                 </button>
@@ -262,21 +269,15 @@ function Header() {
             </>
           ) : (
             <>
-              <Button upload leftIcon={<FontAwesomeIcon icon={faPlus} />}>
+              <Button darkModeUpload={mode} upload leftIcon={<FontAwesomeIcon icon={faPlus} />}>
                 <span>Upload</span>
               </Button>
-              <Button primary>
+              <Button darkModePrimary={mode} primary>
                 <span>Log in</span>
               </Button>
             </>
           )}
-          <Menu
-            items={currentUser ? USER_MENU_ITEMS : MENU_ITEMS}
-            onChange={handleMenuChange}
-            currentUser={currentUser}
-            darkMode={darkMode}
-            setDarkMode={setDarkMode}
-          >
+          <Menu items={currentUser ? USER_MENU_ITEMS : MENU_ITEMS} onChange={handleMenuChange}>
             {currentUser ? (
               <Image
                 className={cx('user-avatar')}
@@ -285,7 +286,11 @@ function Header() {
                 fallBack="https://fullstack.edu.vn/static/media/f8-icon.18cd71cfcfa33566a22b.png"
               />
             ) : (
-              <button className={cx('more-btn')}>
+              <button
+                className={cx('more-btn', {
+                  'action-btn-light': mode,
+                })}
+              >
                 <FontAwesomeIcon icon={faEllipsisVertical} />
               </button>
             )}

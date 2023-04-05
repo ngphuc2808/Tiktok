@@ -1,10 +1,16 @@
 import classNames from 'classnames/bind';
 import styles from './SidebarFooter.module.scss';
+import { useSelector } from 'react-redux';
 
 const cx = classNames.bind(styles);
 function SidebarFooter() {
+  const { mode } = useSelector((state) => state.darkMode);
   return (
-    <div className={cx('wrapper')}>
+    <div
+      className={cx('wrapper', {
+        'dark-mode': mode,
+      })}
+    >
       <div className={cx('list-content')}>
         <a href="https://www.tiktok.com/" className={cx('item-content')} target="_blank" rel="noopener noreferrer">
           About

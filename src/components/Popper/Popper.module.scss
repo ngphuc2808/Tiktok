@@ -6,8 +6,13 @@
   flex-direction: column;
   padding-top: 8px;
   margin-top: 8px;
-  background: rgb(255, 255, 255);
+  background-color: #ffffff;
   box-shadow: rgba(0, 0, 0, 0.12) 0px 2px 12px;
   border-radius: 8px;
   z-index: 1;
+}
+
+.dark-mode {
+  background: #252525;
+  box-shadow: rgba(0, 0, 0, 0.12) 0px 4px 16px;
 }

@@ -17,12 +17,20 @@ import Discover from './Discover';
 import SidebarFooter from '~/layouts/components/Sidebar/SidebarFooter';
 import CheckLogin from './CheckLogin';
 import SidebarContent from './SidebarContent';
+import { useSelector } from 'react-redux';
 
 const cx = classNames.bind(styles);
 function Sidebar() {
   const currentUser = true;
+
+  const { mode } = useSelector((state) => state.darkMode);
+
   return (
-    <aside className={cx('wrapper')}>
+    <aside
+      className={cx('wrapper', {
+        'dark-mode': mode,
+      })}
+    >
       <Menu>
         <MenuItem title="For You" to={config.routes.home} icon={<HomeIcon />} activeIcon={<HomeActiveIcon />} />
         <MenuItem

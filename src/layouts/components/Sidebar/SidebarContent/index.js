@@ -6,6 +6,7 @@ import AccountItem from './AccountItem';
 import { useState, useEffect } from 'react';
 
 import * as suggestedApi from '~/services/suggestedApi';
+import { useSelector } from 'react-redux';
 
 const cx = classNames.bind(styles);
 
@@ -16,6 +17,8 @@ function SidebarContent({ label, following = false }) {
   const [listSuggested, setListSuggested] = useState([]);
 
   const [perPage, setPerPage] = useState(5);
+
+  const { mode } = useSelector((state) => state.darkMode);
 
   useEffect(() => {
     if (!following) {
@@ -35,7 +38,11 @@ function SidebarContent({ label, following = false }) {
   };
 
   return (
-    <div className={cx('wrapper')}>
+    <div
+      className={cx('wrapper', {
+        'dark-mode': mode,
+      })}
+    >
       <p className={cx('label')}>{label}</p>
       {following === false ? (
         <>
@@ -78,7 +85,13 @@ function SidebarContent({ label, following = false }) {
               </button>
             </>
           ) : (
-            <span className={cx('description')}>Accounts you follow will appear here </span>
+            <span
+              className={cx('description', {
+                'dark-mode-text': mode,
+              })}
+            >
+              Accounts you follow will appear here{' '}
+            </span>
           )}
         </>
       )}

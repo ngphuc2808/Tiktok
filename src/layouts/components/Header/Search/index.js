@@ -14,6 +14,7 @@ import AccountItems from '~/components/AccountItems';
 import classNames from 'classnames/bind';
 import styles from './Search.module.scss';
 import * as searchApi from '~/services/searchApi';
+import { useSelector } from 'react-redux';
 
 const cx = classNames.bind(styles);
 
@@ -24,6 +25,8 @@ function Search() {
   const [loading, setLoading] = useState(false);
 
   const debounced = useDebounce(searchValue, 500);
+
+  const { mode } = useSelector((state) => state.darkMode);
 
   const inputRef = useRef();
 
@@ -72,7 +75,7 @@ function Search() {
       >
         <div
           className={cx('search', {
-            'dark-mode': JSON.parse(localStorage.getItem('dark-mode')),
+            'dark-mode': mode,
           })}
         >
           <input
@@ -93,7 +96,7 @@ function Search() {
           {!!searchValue && !loading && (
             <button
               className={cx('clear', {
-                'light-icon': JSON.parse(localStorage.getItem('dark-mode')),
+                'light-icon': mode,
               })}
               onClick={handleClear}
             >
@@ -103,7 +106,7 @@ function Search() {
           {loading && (
             <FontAwesomeIcon
               className={cx('loading', {
-                'light-icon': JSON.parse(localStorage.getItem('dark-mode')),
+                'light-icon': mode,
               })}
               icon={faSpinner}
             />
@@ -111,7 +114,7 @@ function Search() {
 
           <button
             className={cx('search-btn', {
-              'search-btn-dark': JSON.parse(localStorage.getItem('dark-mode')),
+              'search-btn-dark': mode,
             })}
             onMouseDown={(e) => e.preventDefault()}
           >

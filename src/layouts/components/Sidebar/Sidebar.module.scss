@@ -13,9 +13,37 @@
   perspective: 1px;
   transform-style: preserve-3d;
   perspective-origin: right top;
-  background: rgba(255, 255, 255, 1);
+  background: var(--white);
+}
+
+.dark-mode {
+  background-color: var(--dark);
 }
 
 html .wrapper::-webkit-scrollbar {
   width: 6px;
+}
+
+html .wrapper::-webkit-scrollbar-thumb {
+  border-radius: 4px;
+  background-color: rgba(22, 24, 35, 0.06);
+}
+
+html .wrapper::-webkit-scrollbar-track {
+  border-radius: 0;
+  background-color: rgba(0, 0, 0, 0);
+}
+
+html .dark-mode::-webkit-scrollbar {
+  width: 6px;
+}
+
+html .dark-mode::-webkit-scrollbar-thumb {
+  border-radius: 4px;
+  background-color: rgba(255, 255, 255, 0.08);
+}
+
+html .dark-mode::-webkit-scrollbar-track {
+  border-radius: 0;
+  background-color: rgba(0, 0, 0, 0);
 }

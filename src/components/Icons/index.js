@@ -218,7 +218,7 @@ export const ExploreActiveIcon = ({ width = '3.2rem', height = '3.2rem', classNa
   </svg>
 );
 
-export const MusicIcon = ({ width = '1.6rem', height = '1.6rem', className }) => (
+export const MusicIcon = ({ width = '3.2rem', height = '1.6rem', className }) => (
   <svg
     fill="currentColor"
     className={className}
