@@ -90,7 +90,7 @@ function SidebarContent({ label, following = false }) {
                 'dark-mode-text': mode,
               })}
             >
-              Accounts you follow will appear here{' '}
+              Accounts you follow will appear here
             </span>
           )}
         </>

@@ -1,0 +1,188 @@
+.wrapper {
+  padding: 0 20px 20px 0;
+}
+
+.item-user {
+  padding: 20px 0;
+  display: flex;
+  position: relative;
+  &::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 1px;
+    -webkit-transform: scaleY(0.5);
+    -moz-transform: scaleY(0.5);
+    -ms-transform: scaleY(0.5);
+    transform: scaleY(0.5);
+    background: rgba(22, 24, 35, 0.2);
+  }
+}
+
+.content-user {
+  display: flex;
+  justify-content: space-between;
+  flex: 1;
+  margin-left: 12px;
+}
+
+.user-avatar {
+  width: 56px;
+  height: 56px;
+  border-radius: 100%;
+}
+
+.nickname {
+  font-family: var(--font-sofia);
+  font-weight: 700;
+  font-size: 1.8rem;
+  line-height: 25px;
+  display: inline-block;
+  margin-right: 4px;
+}
+
+.username {
+  font-family: var(--font-family);
+  font-weight: 400;
+  font-size: 1.4rem;
+  line-height: 20px;
+  display: inline-block;
+  line-height: 28px;
+}
+
+.description {
+  width: 93%;
+  font-size: 1.6rem;
+  line-height: 22px;
+  word-break: break-word;
+}
+
+.music {
+  width: 93%;
+  font-weight: 600;
+  font-size: 1.6rem;
+  line-height: 22px;
+  margin-top: 4px;
+  margin-bottom: 12px;
+}
+
+.music-icon {
+  transform: translateY(4px);
+  margin-right: 5px;
+  width: 16px;
+  height: 16px;
+}
+
+.video {
+  display: flex;
+  align-items: flex-end;
+}
+
+.video-left {
+  width: 289px;
+  height: calc(380px + (100vw - 480px) / 288 * 20);
+  position: relative;
+  box-sizing: border-box;
+  -webkit-background-size: cover;
+  background-size: cover;
+  cursor: pointer;
+  border-radius: 8px;
+  overflow: hidden;
+  margin-right: 20px;
+  position: relative;
+  &:hover {
+    & .pause-icon {
+      opacity: 1;
+    }
+  }
+}
+
+.play-icon,
+.pause-icon {
+  left: 12px;
+  position: absolute;
+  bottom: 12px;
+  padding: 10px;
+  width: 40px;
+  height: 40px;
+  bottom: 26px;
+}
+
+.pause-icon {
+  opacity: 0;
+  -webkit-transition: opacity 0.3s;
+  transition: opacity 0.3s;
+}
+
+.icon {
+  color: #ffffff;
+}
+
+.progress-area {
+  display: flex;
+  align-items: center;
+  height: 16px;
+  width: 100%;
+  bottom: 12px;
+  padding: 0 12px;
+  position: absolute;
+  cursor: initial;
+  transition: opacity 0.3s ease 0s;
+}
+
+.progress-bar {
+  height: 2px;
+  width: 100%;
+  background-color: rgba(255, 255, 255, 0.34);
+  cursor: pointer;
+
+  &:hover {
+    height: 4px;
+    & .progress::after {
+      opacity: 1;
+    }
+  }
+}
+
+.progress {
+  height: 100%;
+  background-color: #ffffff;
+  position: relative;
+  pointer-events: none;
+  &::after {
+    content: '';
+    height: 12px;
+    width: 12px;
+    position: absolute;
+    right: -6px;
+    top: 50%;
+    transform: translateY(-50%);
+    border-radius: 50%;
+    background-color: #ffffff;
+    opacity: 0;
+    cursor: pointer;
+  }
+}
+
+.progress-time {
+  flex: 0 0 64px;
+  max-width: 64px;
+  margin-inline-start: 8px;
+  font-size: 10px;
+  line-height: 16px;
+  color: rgb(255, 255, 255);
+  text-align: end;
+  white-space: nowrap;
+  font-feature-settings: 'tnum';
+  font-variant-numeric: tabular-nums;
+  font-family: Tahoma, PingFangSC, sans-serif;
+}
+
+.video-file {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
