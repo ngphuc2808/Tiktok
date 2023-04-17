@@ -6,13 +6,14 @@ import Image from '~/components/Image';
 import Button from '~/components/Button';
 import { MusicIcon } from '~/components/Icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faPause, faPlay } from '@fortawesome/free-solid-svg-icons';
+import { faPause, faPlay, faVolumeMute, faVolumeUp } from '@fortawesome/free-solid-svg-icons';
 
 const cx = classNames.bind(styles);
 function VideoItem({ data }) {
   const [playing, setPlaying] = useState(true);
+  const [volume, setVolume] = useState(true);
+
   const videoRef = useRef(null);
-  const iconRef = useRef(null);
 
   const handleVideo = () => {
     if (playing) {
@@ -22,6 +23,10 @@ function VideoItem({ data }) {
       videoRef.current.play();
       setPlaying(true);
     }
+  };
+
+  const handleSetVolume = () => {
+    setVolume(!volume);
   };
 
   return (
@@ -48,15 +53,33 @@ function VideoItem({ data }) {
             <div className={cx('video-left')}>
               <video ref={videoRef} className={cx('video-file')} src={data.file_url} loop />
               {!playing && (
-                <div ref={iconRef} className={cx('play-icon')} onClick={handleVideo}>
+                <div className={cx('play-icon')} onClick={handleVideo}>
                   <FontAwesomeIcon className={cx('icon')} icon={faPlay} />
                 </div>
               )}
               {playing && (
-                <div ref={iconRef} className={cx('pause-icon')} onClick={handleVideo}>
+                <div className={cx('pause-icon')} onClick={handleVideo}>
                   <FontAwesomeIcon className={cx('icon')} icon={faPause} />
                 </div>
               )}
+              <div className={cx('volume')}>
+                <div className={cx('progress-volume-area')}>
+                  <div className={cx('progress-volume-bar')}>
+                    <div className={cx('progress-volume')}></div>
+                  </div>
+                </div>
+                {!volume && (
+                  <div className={cx('volume-icon')} onClick={handleSetVolume}>
+                    <FontAwesomeIcon className={cx('icon')} icon={faVolumeMute} />
+                  </div>
+                )}
+                {volume && (
+                  <div className={cx('volume-icon')} onClick={handleSetVolume}>
+                    <FontAwesomeIcon className={cx('icon')} icon={faVolumeUp} />
+                  </div>
+                )}
+              </div>
+
               <div className={cx('progress-area')}>
                 <div className={cx('progress-bar')}>
                   <div className={cx('progress')}></div>

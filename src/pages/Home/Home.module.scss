@@ -103,7 +103,6 @@
 .pause-icon {
   left: 12px;
   position: absolute;
-  bottom: 12px;
   padding: 10px;
   width: 40px;
   height: 40px;
@@ -114,6 +113,67 @@
   opacity: 0;
   -webkit-transition: opacity 0.3s;
   transition: opacity 0.3s;
+}
+
+.volume {
+  position: absolute;
+  right: 12px;
+  bottom: 26px;
+  &:hover {
+    & .progress-volume-area {
+      display: block;
+    }
+  }
+}
+
+.progress-volume-area {
+  width: 24px;
+  height: 64px;
+  margin: 8px 7px 0px;
+  display: none;
+  position: relative;
+  cursor: pointer;
+  background: rgba(22, 24, 35, 0.34);
+  border-radius: 32px;
+  transform: rotate(180deg);
+}
+
+.progress-volume-bar {
+  width: 2px;
+  height: 48px;
+  background-color: rgba(255, 255, 255, 0.34);
+  position: absolute;
+  left: 11px;
+  top: 8px;
+  bottom: 8px;
+  border-radius: 4px;
+}
+
+.progress-volume {
+  height: 100%;
+  width: 2px;
+  background-color: #ffffff;
+  position: relative;
+  pointer-events: none;
+  caret-color: transparent;
+  &::after {
+    content: '';
+    height: 12px;
+    width: 12px;
+    position: absolute;
+    right: -5px;
+    top: 100%;
+    transform: translateY(-100%);
+    border-radius: 50%;
+    background-color: #ffffff;
+    opacity: 1;
+  }
+}
+
+.volume-icon {
+  padding: 10px;
+  width: 40px;
+  height: 40px;
 }
 
 .icon {
@@ -128,7 +188,6 @@
   bottom: 12px;
   padding: 0 12px;
   position: absolute;
-  cursor: initial;
   transition: opacity 0.3s ease 0s;
 }
 
@@ -151,6 +210,7 @@
   background-color: #ffffff;
   position: relative;
   pointer-events: none;
+  caret-color: transparent;
   &::after {
     content: '';
     height: 12px;
